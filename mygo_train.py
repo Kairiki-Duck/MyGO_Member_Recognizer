@@ -8,9 +8,9 @@ from pathlib import Path
 from PIL import Image
 from torch.utils.tensorboard import SummaryWriter
 from torchvision import transforms
-from tqdm import tqdm  # 增加进度条，体验更好
+from tqdm import tqdm  # 增加进度条，便于观察训练进度
 
-# --- 配置参数 (建议 GitHub 项目使用相对路径) ---
+# --- 配置参数 ---
 CONFIG = {
     "train_dir": "./data/pictures_train",
     "test_dir": "./data/pictures_test",
@@ -76,7 +76,7 @@ class MyGONet(nn.Module):
             return nn.Sequential(
                 nn.Conv2d(in_feat, out_feat, 3, padding=1),
                 nn.BatchNorm2d(out_feat),
-                nn.ReLU(inplace=True),  # inplace 节省显存
+                nn.ReLU(inplace=True),  # inplace节省显存
                 nn.Conv2d(out_feat, out_feat, 3, padding=1),
                 nn.BatchNorm2d(out_feat),
                 nn.ReLU(inplace=True),
@@ -209,4 +209,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
